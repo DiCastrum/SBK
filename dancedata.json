@@ -2,82 +2,82 @@
     {
         "id":"1",
         "name": "Club Cuba",
-        "style": ["Bachata", "Salsa"],
-        "venue": ["Classes"],
+        "styles": ["Bachata", "Salsa", "Kizomba"],
+        "venueType": ["Classes", "Party"],
         "location": {
             "latitude":"55.950332",
             "longitude":"-3.209269",
-            "adress":"3 Queensferry St Ln",
+            "address":"3 Queensferry St Ln",
             "city":"Edinburgh" ,
             "country": "United Kingdom",
             "postcode": "EH2 4PF" 
             },
-        "contact":"myemail1@gmail.com"       
-
+        "contact":"myemail1@gmail.com" ,
+        "postedBy":"myemail1@gmail.com"            
     },
     {
         "id":"2",
         "name": "Boteco do Brasil",
-        "style": ["Salsa"],
-        "venue": ["Classes"],
+        "styles": ["Salsa","Bachata"],
+        "venueType": ["Classes", "Party"],
         "location": {
             "latitude":"55.946174",
             "longitude":"-3.189210",
-            "adress":"47 Lothian St",
+            "address":"47 Lothian St",
             "city":"Edinburgh" ,
             "country": "United Kingdom",
             "postcode": "EH1 1HB" 
             },
-        "contact":"myemail2@gmail.com"
-
+        "contact":"myemail2@gmail.com",
+        "postedBy":"myemail2@gmail.com"       
     },
     {
         "id":"3",
         "name": "Salsa Society",
-        "style": ["Salsa"],
-        "venue": ["Classes"],
+        "styles": ["Salsa"],
+        "venueType": ["Classes"],
         "location": {
             "latitude":"55.945040",
             "longitude":"-3.188787",
-            "adress":"13 Bristo Pl",
+            "address":"13 Bristo Pl",
             "city":"Edinburgh" ,
             "country": "United Kingdom",
             "postcode": "EH8 9AJ" 
             },
-        "contact":"myemail3@gmail.com"
-
+        "contact":"myemail3@gmail.com",
+        "postedBy":"myemail3@gmail.com"        
     },
     {
         "id":"4",
         "name": "El Paso",
-        "style": ["Bachata"],
-        "venue": ["Classes"],
+        "styles": ["Bachata", "Salsa"],
+        "venueType": ["Classes", "Party"],
         "location": {
             "latitude":"55.956325",
             "longitude":"-3.198429",
-            "adress":"3A1, Dundas St",
+            "address":"3A1, Dundas St",
             "city":"Edinburgh" ,
             "country": "United Kingdom",
             "postcode": "EH3 6QG" 
             },
-        "contact":"myemail3@gmail.com"
-
+        "contact":"myemail4@gmail.com",
+        "postedBy":"myemail4@gmail.com"        
     },
     {
         "id":"5",
         "name": "Poterow",
-        "style": ["Salsa"],
-        "venue": ["Classes"],
+        "styles": ["Salsa", "Bachata", "Kizomba"],
+        "venueType": ["Party"],
         "location": {
             "latitude":"55.945416",
             "longitude":"-3.189100",
-            "adress":"5/2 Bristo Pl",
+            "address":"5/2 Bristo Pl",
             "city":"Edinburgh" ,
             "country": "United Kingdom",
             "postcode": "EH8 9AL" 
             },
-        "contact":"myemail3@gmail.com"
-
+        "contact":"myemail5@gmail.com",
+        "postedBy":"myemail5@gmail.com"        
     }
 
 

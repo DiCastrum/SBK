@@ -1,3 +1,5 @@
+//database connection
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -8,6 +10,8 @@ generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialActions"] 
 }
+
+//Auth models
 
 model Account {
   id                 String  @id @default(cuid())
@@ -54,4 +58,32 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+//venues database models
+
+model Venue {
+  id            String       @id @default(cuid())
+  name          String 
+  styles        String[] 
+  venueType     String[]
+  location      Location[]
+  contact       String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  postedBy      String
+}
+
+model Location {
+  id            Int       @id @default(autoincrement())
+  latitude      Float
+  longitude     Float
+  address       String
+  city          String
+  country       String
+  postcode      String 
+
+  venueId      String
+  venue        Venue?    @relation(fields: [venueId], references: [id])
+
 }

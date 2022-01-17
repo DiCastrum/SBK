@@ -1,15 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import dance from '../dancedata.json'
 
-console.log(dance)
 
-//const position = [55.953251, -3.188267]
-//const [position, setPosition] = useState(null)
-
-const Map = ({position}) => {
+const Map = ({position, allVenues}) => {
+  
   const [activeVenue, setActiveVenue] = useState(null)
+  const [venues, setVenues] = useState(allVenues)
 
   return (
     <>        
@@ -19,12 +16,12 @@ const Map = ({position}) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {dance.map(venue => (            
+      {venues.map(venue => (            
         <Marker
           key={venue.id}
           position={[
-            venue.location.latitude,
-            venue.location.longitude
+            venue.location[0].latitude,
+            venue.location[0].longitude
           ]}
           eventHandlers={{
             click: () => {
@@ -36,19 +33,18 @@ const Map = ({position}) => {
       ))}
 
       {activeVenue && (
-        console.log(activeVenue.name),
         <Popup
           position={[
-            activeVenue.location.latitude,
-            activeVenue.location.longitude
+            activeVenue.location[0].latitude,
+            activeVenue.location[0].longitude
           ]}          
           >
           <div>
             <h4>{activeVenue.name}</h4>
-            <p>{activeVenue.venue}</p>
-            <p>Style:{activeVenue.style}</p>
-            <p>Location:{activeVenue.location.adress}, {activeVenue.location.city}, {activeVenue.location.country}, {activeVenue.location.postcode} </p>
-            <p>Contact:{activeVenue.contact}</p>
+            <p>Venue Type: {activeVenue.venueType.map((type, id) => <span key={id}>{type}, </span>)}</p>
+            <p>Style: {activeVenue.styles.map((style,id) => <span key={id}>{style}, </span>)}</p>
+            <p>Location:{activeVenue.location[0].address}, {activeVenue.location[0].city}, {activeVenue.location[0].country}, {activeVenue.location[0].postcode} </p>
+           
           </div>
         </Popup>
       )}
@@ -58,4 +54,7 @@ const Map = ({position}) => {
   )
 }
 
+
+
 export default Map
+
