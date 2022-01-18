@@ -36,7 +36,7 @@ export default function Home() {
       </div>
       <div className="pt-5 md:grid md:grid-cols-2 lg:grid-cols-3  mx-auto">          
           <div className="px-10 md:px-5 py-5  mx-auto ">
-            <Link href="/map/centerOne">
+            <Link href="/map/madrid">
               <a className="">
                 <Image className="w-full align-center rounded" src="/madrid.jpg"  width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">Madrid</p>
@@ -44,7 +44,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="px-10 md:px-5 py-5 mx-auto ">
-            <Link href="/map/centerTwo">
+            <Link href="/map/london">
               <a>
                 <Image className="w-full align-center rounded" src="/london.jpg" width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">London</p>
@@ -52,7 +52,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="px-10 md:px-5 py-5  mx-auto">
-            <Link href="/map/centerThree">
+            <Link href="/map/berlin">
               <a>
                 <Image className="w-full align-center rounded" src="/berlin.jpg"  width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">Berlin</p>
@@ -60,7 +60,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="px-10 md:px-5 py-5  mx-auto">
-            <Link href="/map/centerFour">
+            <Link href="/map/barcelona">
               <a>
                 <Image className="w-full align-center rounded" src="/barcelona.jpg"  width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">Barcelona</p>
@@ -68,7 +68,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="px-10 md:px-5 py-5  mx-auto">
-            <Link href="/map/centerFive">
+            <Link href="/map/edinburgh">
               <a>
                 <Image className="w-full align-center rounded" src="/edinburgh.jpg"  width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">Edinburgh</p>
@@ -76,7 +76,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="px-10 md:px-5 py-5  mx-auto">
-            <Link href="/map/centerSix">
+            <Link href="/map/porto">
               <a>
                 <Image className="w-full align-center rounded" src="/porto.jpg"  width={800} height={600} /> 
                 <p className="text-center text-gray-500 text-xl">Porto</p>

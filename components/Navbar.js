@@ -10,7 +10,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Map', href: 'map', current: false },
+  { name: 'Map', href: '/map/map', current: false },
   { name: 'Add Venue', href: '/addVenue', current: false },
   { name: 'Find a partner', href: '#', current: false },
   
@@ -57,7 +57,7 @@ export default function Example() {
                 <div className="flex items-center justify-between h-16">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                    <Image className="rounded-full h-8 w-8" src="/danceIcon.png" alt="Vercel Logo" width={45} height={45} />
+                    <Image className="rounded-full h-8 w-8" src="/danceIcon.png" alt="dance Logo" width={45} height={45} />
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">

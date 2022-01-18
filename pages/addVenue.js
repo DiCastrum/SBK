@@ -2,24 +2,22 @@ import React from 'react'
 import {useState} from 'react'
 import CountriesList from '../components/CountriesList'
 import dynamic from 'next/dynamic';
-import { useSession } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 import { useRouter } from 'next/router'
-
 
 const MapDrag = dynamic(() => import("../components/MapDrag"), { ssr: false });
 
 const addVenue = () => {
-
+    
     const router = useRouter()
     const { data: session, status } = useSession()
 
     const [positionParent, setPositionParent] = useState({lat:0,lng:0})
+    //console.log('PARENT', positionParent)
     const [formData, setFormData] = useState({})
     const [style, setStyle] = useState([])
     const [venue, setVenue] = useState([]) 
     
-    console.log(positionParent)
-
     //functions to manipulate the formData object
     const addStyles = (newStyle) => {       
         if (!style.includes(newStyle)) {           
@@ -71,7 +69,7 @@ const addVenue = () => {
         
         saveVenue(finalData);
 
-        router.push('/submitVenue')
+        router.push('/submitedVenue')
                 
     }
     
@@ -87,10 +85,12 @@ const addVenue = () => {
     }
 
     return (
+        <>
+        {(session && (
         <div>
             <div className="text-gray-800 text-center font-bold text-2xl my-8">Add a new Venue to our Map</div>
                 {/* Form */}
-                <form className="pt-3 pb-2 md:p-5 max-w-3xl border-2 mx-auto border-gray-300 bg-gray-200 rounded " onSubmit={setFinalVenue} action="/submitVenue" >
+                <form className="pt-3 pb-2 md:p-5 max-w-3xl border-2 mx-auto border-gray-300 bg-gray-200 rounded " onSubmit={setFinalVenue} >
                     {/* Venue Name */}
                     <div className="py-3 md:grid md:grid-cols-4 md:gap-x-0.5 md:p-2" >                
                         <label 
@@ -137,7 +137,7 @@ const addVenue = () => {
                              /> Social Dance
                             <input 
                             className="my-2 mx-3"
-                            type="checkbox" value="Studio" name="dvenue-type" onChange={e => addVenueType(e.target.value)}
+                            type="checkbox" value="Studio" name="venue-type" onChange={e => addVenueType(e.target.value)}
                              /> Practice Studios
                              <input 
                             className="my-2 mx-3"
@@ -204,6 +204,21 @@ const addVenue = () => {
                     </div>
                 </form>            
         </div>
+        ))}
+        {(!session && (
+        <div className="h-screen">
+            <div className="bg-gray-300 w-4/5 mx-auto mt-20 mb-8 p-10 rounded max-w-xl">
+                <div className="text-center font-bold text-xl ">You need to be Sign In to access this page </div>
+                
+            </div>
+            <div className="px-10 md:px-5 py-5 mx-auto ">            
+            <div className="px-5 py-3 bg-gray-700 rounded w-32 mx-auto text-white text-center text-xl hover:bg-gray-900 cursor-pointer" > 
+                <a className="" onClick={() => signIn()}>Sign In</a>          
+            </div>             
+          </div>
+        </div>
+        ))}
+        </>
     )
 }
 

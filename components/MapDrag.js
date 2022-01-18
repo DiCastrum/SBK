@@ -1,46 +1,97 @@
 import React from 'react';
-import { useState, useRef, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { useState, useRef, useMemo, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import geolocation from './Geolocation'
+import { OpenStreetMapProvider } from "leaflet-geosearch";
+import SearchControl from "./SearchControl";
+//import L from 'leaflet'
 
 
+const MapDrag = ({setPositionParent}) => { 
 
-const center = {
-    lat: 55.953251,
-    lng: -3.188267,
-}
+  const [check, setCheck] = useState(true)
 
-const MapDrag = ({setPositionParent}) => {
+  const [position, setPosition] = useState({
+    loaded: false,
+    coordinates: {
+        lat: 0,
+        lng: 0}
+  })
 
-  const [position, setPosition] = useState(center)
-  const markerRef = useRef(null)
-        
-    const eventHandlers = useMemo(
-      () => ({
-        dragend() {
-          const marker = markerRef.current
-          if (marker != null) {
-            setPosition(marker.getLatLng())
-            setPositionParent(marker.getLatLng())            
-          }
-        },
-      }),
-      [],
-    )     
+  const markerRef = useRef(null)    
+  
+  const eventHandlers = useMemo(
+    () => ({
+      dragend() {        
+        const marker = markerRef.current
+        if (marker !== null) {
+          const local = marker.getLatLng()   
+          setPosition({
+            loaded: true,
+            coordinates: {
+                lat: local.lat,
+                lng: local.lng}
+          })          
+          setPositionParent(marker.getLatLng())        
+        }
+      },
+    }),
+    [],
+  )     
+  
+  const location = geolocation()
+
+  useEffect(() => {
+    setPosition(location)
+    setCheck(false)
+  }, [location.loaded, check])
+  
+  const prov = new OpenStreetMapProvider({
+    params: {
+      email: 'castrumcodetest0001@gmail.com', 
+    },
+  });   
+
+  // const geoMove = () => {
+  //   console.log('You Clicked ME')
+  //   const center = [location.coordinates.lat, location.coordinates.lng]
+  //   const marker = markerRef.current
+  //   if (marker !== null) {
+  //     marker.flyTo(center, 10);
+    
+  // }}
+  
+  
 
   return (
-    <>
-      <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
+    <>        
+      { position.loaded &&
+      <MapContainer center={[position.coordinates.lat, position.coordinates.lng]} zoom={8} scrollWheelZoom={true} classNames='map'>
+        {/* <button onClick={geoMove} className="refreshButton"><img src={'/globe.png'} className='ml-1' alt="dance Logo" width={40} height={40} ></img></button> */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />       
+        />  
+        <SearchControl
+          provider={prov}
+          showMarker={true}
+          showPopup={false}
+          popupFormat={({ query, result }) => result.label}
+          maxMarkers={1}
+          retainZoomLevel={false}
+          animateZoom={true}
+          autoClose={true}
+          searchLabel={"Enter address, please"}
+          keepResult={false}
+        />     
         <Marker
           draggable
           eventHandlers={eventHandlers}
-          position={position}
-          ref={markerRef}>
-        </Marker>
-      </MapContainer>
+          position={[position.coordinates.lat, position.coordinates.lng]}
+          ref={markerRef}> 
+        </Marker>        
+      </MapContainer>      
+       }        
     </>
   )
 }
