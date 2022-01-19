@@ -5,10 +5,14 @@
 </p>
 
 
+
+
 SBK is a website for dancers find venues were to learn/practice/dance.
 
 1. Map search for venues with filter for the dances styles and what is looking for.
 2. Users can add new venues to inform fellow dancers of venues that are not listed yet.
+
+
 
 ## Screenshots
 
@@ -16,6 +20,8 @@ SBK is a website for dancers find venues were to learn/practice/dance.
   <img src="public/sitescreen1.png" />
   <img src="public/sitescreen2.png" />
 </p>
+
+
 
 
 ## Getting started
@@ -38,9 +44,10 @@ npm run dev
 ```
 
 
+
 ## Built with
 
-* [Next.js](https://nextjs.org/) - Front end library for building user interfaces
+* [Next.js](https://nextjs.org/) - The React Framework for Production
 * [Tailwind](https://tailwindcss.com/) - CSS framwork
 * [React-Leaflet](https://react-leaflet.js.org/) - Open source maps
 * [NextAuth](https://next-auth.js.org/) - Authentication for Next.js
