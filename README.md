@@ -59,3 +59,7 @@ npm run dev
 ## Author
 
 Pedro de Castro - [Github](https://github.com/DiCastrum) - [LinkedIn](https://linkedin.com/in/pedro-de-castro-dicastrum)
+
+<img src="public/icon.png" alt="drawing" width="100"/> 
+
+DiCastrumTech
